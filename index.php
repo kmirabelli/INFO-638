@@ -28,8 +28,7 @@
 
 <?php
 
-
-echo "<a href="#">Homework 1</a>";
+echo <a href=\\"https://www.katelynmirabelli.com/INFO-638/Homework01/codehw1.php\\">Homework 1</a>;
 
 
 ?>
