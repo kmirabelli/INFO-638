@@ -30,6 +30,8 @@
 
 $change = 159;
 
+// This section done with Elizabeth Phyle's help during code review 
+
 $remain_dollar = $change % 100;
 $change_dollar = intval($change/100);
 
@@ -44,6 +46,8 @@ $change_nickel = intval($remain_dime/5);
 
 $remain_penny = $change % 1;
 $change_penny = intval($remain_nickel/1);
+
+// End partner help section. 
 
 echo "<p>Your are due $change cents back in change total.";
 
