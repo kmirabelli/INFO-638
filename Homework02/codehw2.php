@@ -72,9 +72,6 @@ echo "<br/><br/>";
 
 // The mt_rand() function returns a random value; optionally you may enter a mix and max number to be returned.
 
-
-// begin test section
-
 $heads = 0;
 $tails = 1;
 
