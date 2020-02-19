@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Code Homework 3</title>
+	<title>Code Homework 4</title>
 </head>
 <link href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet">
 <style>
@@ -28,7 +28,7 @@
 
 <?php
 
-echo "<p>Hello World! </p>";
+echo "<p>Hello World!</p>";
 
 ?>
 
