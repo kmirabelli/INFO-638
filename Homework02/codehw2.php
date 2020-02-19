@@ -33,8 +33,9 @@
 
 <?php
 
-//valid ISBN
+//valid ISBNs
 $isbn = 1472154665; 
+// $isbn = "156881111X";
 
 //invalid ISBN
 // $isbn = 1472154664; 
@@ -45,11 +46,11 @@ $temp = str_split($isbn);
 // print_r($temp);
 echo "<br/>";
 
-$check = ((10*$temp[0])+(9*$temp[1])+(8*$temp[2])+(7*$temp[3])+(6*$temp[4])+(5*$temp[5])+(4*$temp[6])+(3*$temp[7])+(2*$temp[8])+(1*$temp[9]));
+$check_1 = ((10*$temp[0])+(9*$temp[1])+(8*$temp[2])+(7*$temp[3])+(6*$temp[4])+(5*$temp[5])+(4*$temp[6])+(3*$temp[7])+(2*$temp[8])+(1*$temp[9]));
 
 // echo $check;
 
-if ($check % 11 > 0)
+if ($check_1 % 11 > 0)
 {
 	echo "<p>This is NOT a valid ISBN!</p>";
 }
@@ -72,39 +73,45 @@ echo "<br/><br/>";
 
 // The mt_rand() function returns a random value; optionally you may enter a mix and max number to be returned.
 
-$heads = 0;
-$tails = 1;
-
 echo "<p>Flipping a coin 1 times...</p>";
-if (mt_rand(0,1) == 0)
-{
-	echo "<img src=\"images/heads.jpg\" width=\"70px\">";
+
+function flipPenny() {
+    (mt_rand(0,1));
+	if (mt_rand(0,1) == 0) {
+		echo "<img src=\"images/heads.jpg\" width=\"70px\">";;
+	}
+	else { 
+		echo "<img src=\"images/tails.jpg\" width=\"70px\">";
+	}
+	echo "<br/><br/>";
 }
-else {
-	echo "<img src=\"images/tails.jpg\" width=\"70px\">";
-}
-echo "<br/><br/>";
+
+flipPenny();
+
 
 echo "<p>Flipping a coin 3 times...</p>";
-echo "<img src=\"images/heads.jpg\" width=\"70px\">";
-echo "<img src=\"images/tails.jpg\" width=\"70px\">";
-echo "<br/><br/>";
+
+for ($x = 0; $x <= 2; $x++) {
+    flipPenny();
+}
 
 echo "<p>Flipping a coin 5 times...</p>";
-echo "<img src=\"images/heads.jpg\" width=\"70px\">";
-echo "<img src=\"images/tails.jpg\" width=\"70px\">";
-echo "<br/><br/>";
+
+for ($x = 0; $x <= 4; $x++) {
+    flipPenny();
+}
 
 echo "<p>Flipping a coin 7 times...</p>";
-echo "<img src=\"images/heads.jpg\" width=\"70px\">";
-echo "<img src=\"images/tails.jpg\" width=\"70px\">";
-echo "<br/><br/>";
+
+for ($x = 0; $x <= 6; $x++) {
+    flipPenny();
+}
 
 echo "<p>Flipping a coin 9 times...</p>";
-echo "<img src=\"images/heads.jpg\" width=\"70px\">";
-echo "<img src=\"images/tails.jpg\" width=\"70px\">";
-echo "<br/><br/>";
-echo "<br/><br/>";
+
+for ($x = 0; $x <= 8; $x++) {
+    flipPenny();
+}
 
 ?>
 
@@ -115,9 +122,6 @@ echo "<br/><br/>";
 echo "<p>Beginning the coin flipping...</p>";
 echo "<br/>";
 
-echo "<img src=\"images/heads.jpg\" width=\"70px\">";
-echo "<img src=\"images/tails.jpg\" width=\"70px\">";
-echo "<br/><br/>";
 
 echo "<p>Flipped two heads in a row, in X flips!</p>";
 echo "<br/><br/>";
