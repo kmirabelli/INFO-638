@@ -74,7 +74,7 @@ echo "<br/><br/>";
 
 <?php
 
-// The mt_rand() function returns a random value; optionally you may enter a mix and max number to be returned.
+// The mt_rand() function returns a random value; optionally you may enter a min and max number to be returned.
 
 echo "<p>Flipping a coin 1 times...</p>";
 
