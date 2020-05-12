@@ -1,0 +1,158 @@
+body {
+	background-color: white;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	color: #303030	;
+	padding: 0px;
+	width:100%; 
+}
+.wrapper {
+	min-height: 100%;
+	padding: 0;
+	width: 100%;
+}
+header {
+	margin-top: 10px;
+	text-align:center
+}
+nav {
+	margin-bottom: 10px;	
+}
+.nav {
+	color: #303030;
+	text-decoration: none;
+}
+.nav:hover {
+	text-decoration: underline;
+}
+.nav:target {
+	text-decoration: underline;
+}
+.login {
+  margin: auto;
+  width: 100%;
+}
+.return { 
+  text-align: center;
+}
+.headline {
+	font-family: 'Asap', sans-serif;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 10px;
+	text-align: left;
+	width: 50%; 
+}
+h1 {
+	font-family: 'Asap', sans-serif;
+}
+h2 {
+	font-family: 'Asap', sans-serif;
+}
+h4 {
+	font-family: 'Asap', sans-serif;
+}
+a {
+	color: #303030;
+}
+.small_image {
+	display: inline-block;
+	padding-right: 20px;
+	vertical-align:top;
+	width: 50%;
+}
+.inline_text {
+	display: inline-block;
+	width: 40%;
+}
+button {
+  background-color: white;
+  border: solid 1px black;
+  border-radius: 10px;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+}
+.footer {
+	margin-top: -50px;
+}
+footer {
+	color: #303030;
+	padding: 40px;
+	text-align:center;
+}
+.tile1 {
+	background-color: #fefbd8;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+	width: 50%;
+}
+.tile2 {
+	background-color: #cfe0e8;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+	width: 50%;
+}
+.tile3 {
+	background-color: #d5f4e6;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+	width: 50%;
+}
+@media only screen and (max-width: 600px) {
+    .tile1 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 0;
+	margin-right: 0;
+	overflow: hidden;
+	width: 100%;  
+	}
+  	.tile2 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 0;
+	margin-right: 0;
+	overflow: hidden;
+	width: 100%;  
+	}
+ 	.tile3 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 0;
+	margin-right: 0;
+	overflow: hidden;
+	width: 100%;  
+    }
+	.headline {
+	width: 100%; 
+	}
+	.small_image {
+	display: block;
+	width: 100%;
+	}
+	.inline_text {
+	display: block;
+	width: 100%;
+	}   
+}
+.error {
+	color: red;
+}
+.message {
+	color: blue;
+}
