@@ -1,22 +1,19 @@
-
 <!DOCTYPE html>
 <html>
 <body>
-
 <?php
-// require_once 'includes/auth.php';
-
-include_once 'includes/header.php';
-require_once 'includes/login.php';
-require_once 'includes/functions.php';
-
+# Create variables to store our db login information
+$hn = 'localhost';
+$db = 'animal_shelter';
+$un = 'root';
+$pw = '';
+ 
 # Make the connection to mysql using the credentials above
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) die($conn->connect_error);
 
 # Construct the query for the results we'd like
-$query = "SELECT title, image, sched_date FROM schedule NATURAL JOIN recipes";
-
+$query = "SELECT * FROM pets";
 
 # Run our query, making sure we received results back
 $result = $conn->query($query);
@@ -27,10 +24,9 @@ $rows = $result->num_rows;
 
 # Get and print out each row returned from the database
 while ($row = $result->fetch_assoc()) {
-	echo $row["image"]." ".$row["title"]." ".$row["sched_date"];
+	echo $row["pet_id"]." ".$row["name"]." ".$row["age"]." ";
+	echo $row["sex"]." ".$row["species"]."<br>";
 }
-
-include_once 'includes/footer.php';
 
 # close the database connection
 $result->close();

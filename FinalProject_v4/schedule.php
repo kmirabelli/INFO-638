@@ -4,8 +4,11 @@
 <body>
 
 <?php
+// require_once 'includes/auth.php';
+
 include_once 'includes/header.php';
 require_once 'includes/login.php';
+require_once 'includes/functions.php';
  
 # Make the connection to mysql using the credentials above
 $conn = new mysqli($hn, $un, $pw, $db);

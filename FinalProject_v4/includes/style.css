@@ -28,6 +28,13 @@ nav {
 .nav:target {
 	text-decoration: underline;
 }
+.login {
+  margin: auto;
+  width: 100%;
+}
+.return { 
+  text-align: center;
+}
 .headline {
 	font-family: 'Asap', sans-serif;
 	margin-left: auto;
@@ -45,6 +52,9 @@ h2 {
 h4 {
 	font-family: 'Asap', sans-serif;
 }
+a {
+	color: #303030;
+}
 .small_image {
 	display: inline-block;
 	padding-right: 20px;
@@ -58,14 +68,14 @@ h4 {
 button {
   background-color: white;
   border: solid 1px black;
-  border-radius: 12px;
+  border-radius: 10px;
   color: black;
   font-family: 'Roboto', sans-serif;
   padding: 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   margin: 4px 2px;
 }
 .footer {

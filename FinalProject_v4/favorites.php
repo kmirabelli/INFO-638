@@ -3,8 +3,11 @@
 <body>
 
 <?php
+// require_once 'includes/auth.php';
+
 include_once 'includes/header.php';
 require_once 'includes/login.php';
+require_once 'includes/functions.php';
 
 # Make the connection to mysql using the credentials above
 $conn = new mysqli($hn, $un, $pw, $db);
@@ -42,6 +45,7 @@ while ($row = $result->fetch_assoc()) {
     echo "Estimated Cost: $";  
     echo $row['estimated_cost'];
     echo "<br><br>";  
+    echo "<button>Add to Schedule</button>";
     echo "<button>Remove from Favorites</button>";
 	echo "</div>";
     echo "</div>";

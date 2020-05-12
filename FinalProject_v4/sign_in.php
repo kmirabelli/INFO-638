@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include_once 'includes/header.php';
 require_once 'includes/login.php';
 require_once 'includes/functions.php';
 
@@ -37,13 +37,15 @@ if (isset($_POST['submit'])) { //check if the form has been submitted
 include_once 'includes/header.php'; 
 if (isset($message)) echo $message;
 ?>
-<fieldset style="width:30%"><legend>Log-in</legend>
+<div class="login">
+<fieldset style="width:25%"><legend>Log-in</legend><br>
 <form method="POST" action="">
 Username:<br><input type="text" name="username" size="40"><br>
-Password:<br><input type="password" name="password" size="40"><br>
+Password:<br><input type="password" name="password" size="40"><br><br>
 <input type="submit" name="submit" value="LOGIN">
 </form>
 </fieldset>
 <br>
+</div>
 <?php include_once 'includes/footer.php'; ?>
 

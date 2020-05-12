@@ -1,6 +1,6 @@
 <?php
 $hn = 'localhost';
 $db = 'animal_shelter';
-$un = 'bsmith';
-$pw = 'mysecret';
+$un = 'a_shelter_user';
+$pw = 'a_shelter_user';
 ?>

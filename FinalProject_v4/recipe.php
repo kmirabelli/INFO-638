@@ -1,53 +1,81 @@
 <?php
-session_start();
-require_once 'includes/auth.php';
-
 include_once 'includes/header.php';
 require_once 'includes/login.php';
-require_once 'includes/functions.php';
 
-# Make the connection to mysql using the credentials from login file
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) die($conn->connect_error);
 
-# Construct the query for the results we'd like
-$query = "SELECT title, image_path, servings, cook_time, estimated_cost FROM recipes";
-
-# Run our query, making sure we received results back
-$result = $conn->query($query);
-if (!$result) die($conn->error);
-
-# Determine the number of rows returned so we can loop through them
-$rows = $result->num_rows;
-
-# Get and print out each row returned from the database
-while ($row = $result->fetch_assoc()) {
-    echo "<div class='wrapper'>";
-	echo "<div class='tile'>";
-	echo "<img width='100%' alt='recipe photo' src='";
-    echo $row['image_path'];
-    echo "'/> ";
-    echo "<br>";
-    echo "<h2>";
-    echo $row['title'];
-    echo "</h2>";
-    echo "Servings: ";
-    echo $row['servings'];
-    echo "<br>";
-    echo "Cook Time: ";
-    echo $row['cook_time'];
-    echo "<br>";  
-    echo "Estimated Cost: $";  
-    echo $row['estimated_cost'];
-	echo "</div>";
-	echo "</div>";
+if (isset($_GET['recipe_id'])) {
+    $id = sanitizeMySQL($conn, $_GET['recipe_id']);
+    $query = "SELECT recipe_id, image_path, title,diet_name, servings, cook_time, estimated_cost, instructions, ingredient_amt, ingredient_desc FROM recipes 
+        NATURAL JOIN diets 
+        NATURAL JOIN ingredients 
+        NATURAL JOIN ing_to_recipe 
+        WHERE recipe_id=".$id;
+    $result = $conn->query($query);
+    if (!$result) die ("Invalid recipe id.");
+    $rows = $result->num_rows;
+    $ing = $result->num_rows;
+    if ($rows == 0) {
+        echo "No recipe found with id of $id<br>";
+    } else {
+        while ($row = $result->fetch_assoc()) {
+            echo "<div class='wrapper'>";
+            echo "<div class='tile1'>";
+            echo "<img width='100%' alt='recipe photo' src='";
+            echo $row['image_path'];
+            echo "'/> ";
+            echo "<br>";
+            echo "<h2>";
+            echo $row["title"];
+            echo "</h2>";
+            echo "Diet: ";
+            echo $row['diet_name'];
+            echo "<br>";
+            echo "Servings: ";
+            echo $row['servings'];
+            echo "<br>";
+            echo "Cook Time: ";
+            echo $row['cook_time'];
+            echo "<br>";  
+            echo "Estimated Cost: $";  
+            echo $row['estimated_cost'];
+            echo "<br><br>"; 
+            echo "<h2>";
+            echo "Ingredients";
+            echo "</h2>";
+            while ($ing = $result->fetch_assoc()) {
+            echo $ing['ingredient_amt']." ".$ing['ingredient_desc']."<br>";
+            }
+            echo "<br>";  
+            echo "<h2>";
+            echo "Instructions";
+            echo "</h2>";
+            echo $row['instructions'];
+            echo "<br>";  
+            echo "</div>";
+            echo "</div>";       
+        }
+    }
+    echo "<p class=\"return\"><a href=\"index.php\">Return to Home</a></p>";
+} else {
+    echo "No recipe id passed";
 }
 
 include_once 'includes/footer.php';
 
-# close the database connection
-$result->close();
-$conn->close();
+function sanitizeString($var)
+{
+    $var = stripslashes($var);
+    $var = strip_tags($var);
+    $var = htmlentities($var);
+    return $var;
+}
+function sanitizeMySQL($connection, $var)
+{
+    $var = sanitizeString($var);
+    $var = $connection->real_escape_string($var);
+    return $var;
+}
+
 ?>
-</body>
-</html>
