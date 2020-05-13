@@ -23,9 +23,9 @@ if (isset($_POST["submit"])) {
 ?>
 
 <form action="" method="post">
-	Enter User ID <input type="text" name="id">
-	Enter Recipe ID<input type="text" name="recipe_id">
-	Enter Schedule Date (YYYY-MM-DD)<input type="text" name="sched_date">
+	Enter User ID <input type="text" name="id"><br>
+	Enter Recipe ID<input type="text" name="recipe_id"><br>
+	Enter Schedule Date (YYYY-MM-DD)<input type="text" name="sched_date"><br><br>
 	<input type="submit" name="submit">
 </form>
 

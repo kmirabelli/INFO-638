@@ -3,29 +3,25 @@ include_once 'includes/header.php';
 require_once 'includes/login.php';
 
 if (isset($_POST["submit"])) {
-	if ((empty($_POST['id'])) || (empty($_POST['recipe_id'])) || (empty($_POST['sched_date']))) {
+	if (empty($_POST['recipe_id'])) {
 		echo "<p>Please fill out all of the form fields.</p>";
 	} else {
 		$conn = new mysqli($hn, $un, $pw, $db);
 		if ($conn->connect_error) die($conn->connect_error);
-		$user = sanitizeMySQL($conn, $_POST['id']);
 		$recipe = sanitizeMySQL($conn, $_POST['recipe_id']);
-		$sched_date = sanitizeMySQL($conn, $_POST['sched_date']);
-		$query = "INSERT INTO `schedule` (`schedule_id`, `id`, `sched_date`, `recipe_id`) VALUES (NULL, $user, \"$sched_date\", $recipe)";
+		$query = "DELETE FROM `favorites` WHERE `recipe_id`=$recipe";
 		$result = $conn->query($query);
 		if (!$result) {
 			die ("Database access failed: " . $conn->error);
 		} else {
-		echo "<p>Successfully added new favorite recipe!</p>";
+		echo "<p>Successfully removed recipe!</p>";
 		}
 	}
 }
 ?>
 
 <form action="" method="post">
-	Enter User ID <input type="text" name="id">
 	Enter Recipe ID<input type="text" name="recipe_id">
-	Enter Schedule Date (YYYY-MM-DD)<input type="text" name="sched_date">
 	<input type="submit" name="submit">
 </form>
 

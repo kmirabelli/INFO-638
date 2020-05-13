@@ -31,6 +31,9 @@ while ($row = $result->fetch_assoc()) {
     echo "<h2>";
     echo "<a href=\"recipe.php?recipe_id=".$row["recipe_id"]."\">".$row["title"]."</a>";
     echo "</h2>";
+    echo "Recipe ID: ";
+    echo $row['recipe_id'];
+    echo "<br>";
     echo "Diet: ";
     echo $row['diet_name'];
     echo "<br>";
@@ -43,16 +46,7 @@ while ($row = $result->fetch_assoc()) {
     echo "Estimated Cost: $";  
     echo $row['estimated_cost'];
     echo "<br><br>";  
-
-
-
-
-    echo "<a href=\"addfavorites.php?recipe_id=".$row["recipe_id"]."\"><button>"."Add to Favorites"."</button></a>";
-
-	
-
-
-
+    echo "<a href=\"addfavorites.php\"><button>"."Add to Favorites"."</button></a>";
     echo "</div>";
     echo "</div>";
 }

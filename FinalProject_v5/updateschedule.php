@@ -10,13 +10,13 @@ if (isset($_POST["submit"])) {
 		if ($conn->connect_error) die($conn->connect_error);
 		$user = sanitizeMySQL($conn, $_POST['id']);
 		$recipe = sanitizeMySQL($conn, $_POST['recipe_id']);
-		$sched_date = sanitizeMySQL($conn, $_POST['sched_date']);
-		$query = "INSERT INTO `schedule` (`schedule_id`, `id`, `sched_date`, `recipe_id`) VALUES (NULL, $user, \"$sched_date\", $recipe)";
+		$new_sched_date = sanitizeMySQL($conn, $_POST['sched_date']);
+		$query = "UPDATE `schedule` SET `sched_date`=\"$new_sched_date\" WHERE `id`=$user AND `recipe_id`=$recipe";
 		$result = $conn->query($query);
 		if (!$result) {
 			die ("Database access failed: " . $conn->error);
 		} else {
-		echo "<p>Successfully added new favorite recipe!</p>";
+		echo "<p>Successfully updated recipe schedule!</p>";
 		}
 	}
 }
@@ -25,7 +25,7 @@ if (isset($_POST["submit"])) {
 <form action="" method="post">
 	Enter User ID <input type="text" name="id">
 	Enter Recipe ID<input type="text" name="recipe_id">
-	Enter Schedule Date (YYYY-MM-DD)<input type="text" name="sched_date">
+	Enter New Schedule Date (YYYY-MM-DD)<input type="text" name="sched_date">
 	<input type="submit" name="submit">
 </form>
 

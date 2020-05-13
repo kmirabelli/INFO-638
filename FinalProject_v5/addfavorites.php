@@ -2,25 +2,32 @@
 include_once 'includes/header.php';
 require_once 'includes/login.php';
 
-if (isset($_POST['submit'])) { //check if the form has been submitted
-	if ((empty($_POST['name'])) || (empty($_POST['age'])) || (empty($_POST['sex'])) || (empty($_POST['species'])) ) {
-		echo "<p>Please fill out all of the form fields!</p>";
+if (isset($_POST["submit"])) {
+	if ((empty($_POST['id'])) || (empty($_POST['recipe_id']))) {
+		echo "<p>Please fill out all of the form fields.</p>";
 	} else {
 		$conn = new mysqli($hn, $un, $pw, $db);
 		if ($conn->connect_error) die($conn->connect_error);
-		$title = sanitizeMySQL($conn, $_POST['title']);
-		$fave_id = sanitizeMySQL($conn, $_POST['fave_id']);
-		$id = sanitizeMySQL($conn, $_POST['id']);			
-		$recipe_id = sanitizeMySQL($conn, $_POST['recipe_id']);
-		$query = "INSERT INTO favorites VALUES(\"$fave_id\", \"$id\", \"$recipe_id\")";
+		$user = sanitizeMySQL($conn, $_POST['id']);
+		$recipe = sanitizeMySQL($conn, $_POST['recipe_id']);
+		$query = "INSERT INTO `favorites` (`fave_id`, `id`, `recipe_id`) VALUES (NULL, $user, $recipe)";
 		$result = $conn->query($query);
 		if (!$result) {
 			die ("Database access failed: " . $conn->error);
 		} else {
-			echo "<p>Successfully added new favorite recipe named $title! <a href=\"index.php\">Return to home page</a></p>";
+		echo "<p>Successfully added new favorite recipe!</p>";
 		}
 	}
 }
+?>
+
+<form action="" method="post">
+	Enter User ID <input type="text" name="id">
+	Enter Recipe ID<input type="text" name="recipe_id">
+	<input type="submit" name="submit">
+</form>
+
+<?php
 function sanitizeString($var)
 {
 	$var = stripslashes($var);
@@ -35,10 +42,7 @@ function sanitizeMySQL($connection, $var)
 	return $var;
 }
 ?>
-<form method="post" action="addfavorites.php">
-<!-- 	<fieldset>
-		<input type="submit" name="submit">
-	</fieldset> -->
+
 <?php
 include_once 'includes/footer.php';
 ?>
